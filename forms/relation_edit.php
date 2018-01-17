@@ -23,7 +23,7 @@ require "./forms.php";
 if (!isset($_POST['posted'])) { // print form
     $person = $_GET['person'];
     $name = get_name($person);
-    $title = "$person $name: Rediger relasjon";
+    $title = "$person $name: gettext(Rediger relasjon)";
     $form = 'edit_relation';
     if (!isset($_GET['parent'])) // focus on parent_id
         $focus = 'parent';
@@ -62,7 +62,7 @@ if (!isset($_POST['posted'])) { // print form
         $surety = 3;
     }
     $pprompt = ucfirst($ptype[$gender]) . ':';
-    echo "<h2>$atype " . $ptype[$gender] . " for $name</h2>\n";
+    echo "<h2>$atype " . $ptype[$gender] . " gettext(for) $name</h2>\n";
     form_begin($form, $_SERVER['PHP_SELF']);
     hidden_input('posted', 1);
     hidden_input('person', $person);
@@ -78,7 +78,7 @@ if (!isset($_POST['posted'])) { // print form
     form_submit();
     form_end();
     if ($qtype == 'update') {
-        echo "<h3>$_References</h3>\n";
+        echo "<h3>gettext(References)</h3>\n";
         $handle = pg_query("
             SELECT
                 source_fk,

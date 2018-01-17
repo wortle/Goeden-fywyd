@@ -17,7 +17,7 @@ if (!isset($_POST['posted'])) {
     $person = $_GET['person'];
     $source = $_GET['source'];
     $self =  isset($_GET['self']) ? $_GET['self'] : 0;
-    $title = "$_Edit_source #$source";
+    $title = "gettext(Edit source) #$source";
     $template = fetch_val("SELECT template FROM templates WHERE source_fk = $source");
     $form = 'source_edit';
     $focus = 'text';
@@ -31,16 +31,16 @@ if (!isset($_POST['posted'])) {
     $part_type = $row['part_type'] ? $row['part_type'] : 0;
     $ch_part_type = $row['ch_part_type'] ? $row['ch_part_type'] : 0;
     $spt_label = fetch_val("SELECT get_spt_label($part_type)");
-    echo "<h2>$_Edit_source $source ($spt_label)</h2>\n";
-    echo "<p><a href=\"../source_manager.php?node=$source\">$_To $_Source_Manager</a></p>";
+    echo "<h2>gettext(Edit source) $source ($spt_label)</h2>\n";
+    echo "<p><a href=\"../source_manager.php?node=$source\">gettext(To Source Manager)</a></p>";
     echo "<p>" . str_replace('./family.php', '../family.php', get_source_text($source)) . "</p>\n";
     form_begin($form, $_SERVER['PHP_SELF']);
     hidden_input('posted', 1);
     hidden_input('person', $person);
     hidden_input('source', $source);
     hidden_input('ret', $ret);
-    source_num_input("$_Parent_node:", 'psource', $psource);
-    editarea_input("$_Text:", 20, 100, 'text', $text);
+    source_num_input("gettext(Parent node:)", 'psource', $psource);
+    editarea_input("gettext(Text:)", 20, 100, 'text', $text);
     if (fetch_val("SELECT is_leaf($source)") == 'f') {
         textarea_input('Template:', 3, 100, 'template', $template);
         select_source_type("Type", 'part_type', $part_type);
@@ -51,12 +51,12 @@ if (!isset($_POST['posted'])) {
         hidden_input('part_type', $part_type);
         hidden_input('ch_part_type', 0);
     }
-    text_input("$_Sort_order:", 20, 'sort', $sort);
-    text_input("$_Source_date:", 20, 'source_date', $source_date);
+    text_input("gettext(Sort order:)", 20, 'sort', $sort);
+    text_input("gettext(Source date:)", 20, 'source_date', $source_date);
     form_submit();
     form_end();
     $row = fetch_row("SELECT ecc($source), rcc($source), ssc($source)");
-    printf ("<p>$_There_are %s %s, %s %s $_and %s %s $_associated_with_this_source.</p>",
+    printf ("<p>gettext(There_are) %s %s, %s %s gettext(and) %s %s gettext(associated with this source.)</p>",
         $row[0], ($row[0]==1 ? $_event : $_events),
         $row[1], ($row[1]==1 ? $_relation : $_relations),
         $row[2], ($row[2]==1 ? $_subsource : $_subsources));

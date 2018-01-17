@@ -20,7 +20,7 @@ $label = 'label_' . $language;
 $spt_name = fetch_val("
     SELECT $label FROM source_part_types WHERE part_type_id = $spt
 ");
-$title = "$_All $_sources $_of type $spt_name";
+$title = "gettext(All sources of type) $spt_name";
 require "./header.php";
 
 echo "<div class=\"normal\">\n";

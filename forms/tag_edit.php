@@ -16,7 +16,7 @@ require "./forms.php";
 if (!isset($_POST['posted'])) {
     $tag = $_GET['tag'];
     if ($tag == 0) { // new tag type
-        $title = "$_Insert $_event_type";
+        $title = "gettext(Insert event type)";
         $tag_group    = 8;  // group 'other' by default
         $tag_name     = '';
         $gedcom_tag   = 'NOTE'; // GEDCOM tag = NOTE by default
@@ -24,7 +24,7 @@ if (!isset($_POST['posted'])) {
         $tag_type     = 1; // single-person by default
     }
     else {
-        $title = "$_Edit $_event_type #$tag";
+        $title = "gettext(Edit event type) #$tag";
         $tag_row = fetch_row_assoc("SELECT * FROM tags WHERE tag_id = $tag");
         $tag_group  = $tag_row['tag_group_fk'];
         $tag_name   = $tag_row['tag_name'];

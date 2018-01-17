@@ -86,19 +86,19 @@ function build_tree($person, $henry, $level, $total) {
 $person = $_GET["person"];
 $name = get_name($person);
 $descendants = true;
-$title = "$person $name, $_descendants";
+$title = "$person $name, gettext(descendants)";
 require "./header.php";
 echo "<div class=\"normal\">";
-print "<h2>$_Descendants $_of $name</h2>\n";
+print "<h2>gettext(Descendants) gettext(of) $name</h2>\n";
 $parents = get_parents($person);
-print "<p><strong>$_Father:</strong> $parents[0]<br />\n";
-print "<strong>$_Mother:</strong> $parents[1]\n</p>\n";
+print "<p><strong>gettext(Father):</strong> $parents[0]<br />\n";
+print "<strong>gettext(Mother):</strong> $parents[1]\n</p>\n";
 printf ("<ul class=\"descendants\">\n<li><strong>%s</strong></li>\n", get_name_and_dates('./family.php', $person));
 $spouses = 0;
 $descendants = 0;
 build_tree($person, '', 0, 0);
 echo "</ul>\n";
-echo "<p>$_There_are $descendants $_descendants $_and $coparents $_coparents $_in_this_report.</p>\n";
+echo "<p>ngettext(There are $descendants descendants and $coparents coparents in this report.)</p>\n";
 echo '<p class="bmd">Utskrift av ' . mydate(date("Y-m-d")) . "</p>\n";
 // this report is a great handout, and I include my name and address here
 researcher_info('leif.txt');

@@ -17,7 +17,7 @@ require_once "./langs/$language.php";
 
 $tag = $_GET['tag'];
 $tag_name = fetch_val("SELECT get_tag_name($tag)");
-$title = "$_All $_events $_of type $tag_name";
+$title = "gettext(All events of type) $tag_name";
 require "./header.php";
 
 echo "<div class=\"normal\">\n";

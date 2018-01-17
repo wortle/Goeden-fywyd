@@ -15,7 +15,7 @@
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
 <meta name="Author" content="Leif Biberg Kristensen" />
 <link rel="stylesheet" type="text/css" href="form.css" />
-<link rel="shortcut icon" href="http://localhost/~leif/yggdrasil/forms/favicon.ico" />
+<link rel="shortcut icon" href="forms/favicon.ico" />
 <script language="javascript" type="text/javascript" src="/addons/jquery.js"></script>
 <script language="javascript" type="text/javascript" src="forms.js"></script>
 <script language="javascript" type="text/javascript" src="/editarea/edit_area/edit_area_full.js"></script>

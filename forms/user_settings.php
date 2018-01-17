@@ -29,7 +29,7 @@ if (!isset($_POST['posted'])) {
         WHERE
             username = current_user
     ");
-    $title = "$_User_settings for " . $settings['username'];
+    $title = "gettext(User settings for) " . $settings['username'];
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     $form = 'user_settings';
@@ -37,8 +37,8 @@ if (!isset($_POST['posted'])) {
     hidden_input('posted', 1);
 
     //section: user language
-    echo "<tr><td colspan=\"2\"><b>$_Language</b></td></tr>\n";
-    echo "<tr><td>$_Language:  </td><td>\n<select name=\"user_lang\">\n";
+    echo "<tr><td colspan=\"2\"><b>gettext(Language)</b></td></tr>\n";
+    echo "<tr><td>gettext(Language:)  </td><td>\n<select name=\"user_lang\">\n";
     echo "<option";
     if ($settings['user_lang'] == 'en')
             echo " selected=\"selected\"";
@@ -50,15 +50,15 @@ if (!isset($_POST['posted'])) {
     echo "</select></td></tr><tr><td colspan=\"2\">&nbsp;</td></tr>\n";
 
     // section: User details
-    echo "<tr><td colspan=\"2\"><b>$_User_details</b></td></tr>\n";
-    text_input("$_Full_name:", 40, 'user_full_name', $settings['user_full_name']);
-    text_input("$_Email_addr:", 40, 'user_email', $settings['user_email']);
-    text_input("$_Initials:", 10, 'initials', $settings['initials']);
+    echo "<tr><td colspan=\"2\"><b>gettext(User details)</b></td></tr>\n";
+    text_input("gettext(Full_name:)", 40, 'user_full_name', $settings['user_full_name']);
+    text_input("gettext(Email addr:)", 40, 'user_email', $settings['user_email']);
+    text_input("gettext(Initials:)", 10, 'initials', $settings['initials']);
     echo "<tr><td colspan=\"2\">&nbsp;</td></tr>\n";
 
     // Section: place filter settings
-    echo "<tr><td colspan=\"2\"><b>$_Place_filter</b></td></tr>\n";
-    echo "<tr><td>$_Level:  </td><td>\n<select name=\"place_filter_level\">\n";
+    echo "<tr><td colspan=\"2\"><b>gettext(Place filter)</b></td></tr>\n";
+    echo "<tr><td>gettext(Level:)  </td><td>\n<select name=\"place_filter_level\">\n";
     $place_desc = 'desc_' . $language; // desc_en or desc_nb
     $handle = pg_query("
         SELECT
@@ -76,7 +76,7 @@ if (!isset($_POST['posted'])) {
         echo $option;
     }
     echo "</select></td></tr>\n";
-    text_input("$_Contents:", 10, 'place_filter_content', $settings['place_filter_content']);
+    text_input("gettext(Contents:)", 10, 'place_filter_content', $settings['place_filter_content']);
     echo "<tr><td colspan=\"2\">&nbsp;</td></tr>\n";
 
     form_submit();

@@ -19,7 +19,7 @@ require "./header.php";
 
 echo "<div class=\"normal\">\n";
 
-echo "<h2>Uidentifiserte personer fra lenking:</h2>\n";
+echo "<h2>gettext(Unidentified people from linking:)</h2>\n";
 $handle = pg_query("
     SELECT
         s.source_id AS source,

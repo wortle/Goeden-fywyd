@@ -12,12 +12,12 @@ require "./settings/settings.php";
 require "./functions.php";
 require_once "./langs/$language.php";
 
-$title = "$_Event_types";
+$title = "gettext(Event_types)";
 require "./header.php";
 
 echo "<div class=\"normal\">\n";
 echo "<h2>$title</h2>\n";
-echo "<p>( <a href=\"./forms/tag_edit.php?tag=0\">$_insert</a> )</p>\n";
+echo "<p>( <a href=\"./forms/tag_edit.php?tag=0\">gettext(insert)</a> )</p>\n";
 echo "<table>\n";
 $tag_group_name = 'tag_group_name_' . $language;
 $handle = pg_query("
@@ -40,9 +40,9 @@ while ($row = pg_fetch_assoc($handle)) {
     echo "<tr>";
     if ($row['tc'] == 0) // if tag is unused, display link for deletion
         echo "<td><strong><a href=\"./forms/tag_delete.php?tag=".$row['tag_id']
-            . "\">$_delete</a></strong></td>";
+            . "\">gettext(delete)</a></strong></td>";
     else
-        echo "<td><a href=\"./tag_view.php?tag=".$row['tag_id']."\">$_report</a></td>";
+        echo "<td><a href=\"./tag_view.php?tag=".$row['tag_id']."\">gettext(report)</a></td>";
     echo "<td align=\"right\">".$row['tc']."</td>";
     // echo "<td>".$row['tag_group_label']."</td>";
     echo "<td><code>".$row['gedcom_tag']."</code></td>";

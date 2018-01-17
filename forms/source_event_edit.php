@@ -17,7 +17,7 @@ if (!isset($_POST['posted'])) {
     // do form
     $source = $_GET['source'];
     $event = $_GET['event'];
-    $title = "$_Edit_event #$event";
+    $title = "gettext(Edit event) #$event";
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     $rec = fetch_row_assoc("
@@ -43,11 +43,11 @@ if (!isset($_POST['posted'])) {
     select_tag($rec['tag_fk']);
     select_place($rec['place_fk']);
     date_input($rec['event_date'], $rec['sd']);
-    textarea_input("$_Text:<br />$notelen", $note_height, $note_width,
+    textarea_input("gettext(Text:)<br />$notelen", $note_height, $note_width,
         'event_note', $note);
     form_submit();
     form_end();
-    echo "<h3>$_Citations</h3>\n";
+    echo "<h3>gettext(Citations)</h3>\n";
     $handle = pg_query("
         SELECT source_fk
         FROM event_citations

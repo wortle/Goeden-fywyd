@@ -45,13 +45,13 @@ require "./forms.php";
 
 if (!isset($_POST['posted'])) {
     $person = $_GET['person'];
-    $title = "$_Merge_persons";
+    $title = "gettext(Merge_persons)";
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     form_begin('person_merge', $_SERVER['PHP_SELF']);
     hidden_input('posted', 1);
-    text_input("Person 1:", 10, 'person_1', $person);
-    text_input("Person 2:", 10, 'person_2');
+    text_input("gettext(Person 1:)", 10, 'person_1', $person);
+    text_input("gettext(Person 2:)", 10, 'person_2');
     form_submit();
     form_end();
     echo "</body>\n</html>\n";
@@ -95,19 +95,19 @@ else {
     // compare gender of candidates
     if ($row_1['gender'] != $row_2['gender']) {
         $okay = false;
-        $reason .= " $_Differing_genders.";
+        $reason .= " gettext(Differing genders.)";
     }
     // if both candidates have birth dates, compare them
     if ($bdate_1 && $bdate_2) {
         if (!year_comp($bdate_1, $bdate_2, 20)) {
             $okay = false;
-            $reason .= " $_Differing_birth_years.";
+            $reason .= " gettext(Differing birth years.)";
         }
     }
     // compare given names.of candidates
     if (!soundex_comp($given_1f, $given_2f, 20)) {
         $okay = false;
-        $reason .= " $_Differing_given_names. ($given_1f &lt;&gt; $given_2f)";
+        $reason .= " gettext(Differing given names.) ($given_1f &lt;&gt; $given_2f)";
     }
     // compare patronyms. Don't care if it's missing for one or both candidates.
     // You may want to change this code if you're researching a non-patronymic
@@ -116,7 +116,7 @@ else {
         if (!soundex_comp($patronym_1f, $patronym_2f, 20)) {
             $okay = false;
             $reason .=
-                " $_Differing_patronyms. ($patronym_1f &lt;&gt; $patronym_2f).";
+                " gettext(Differing patronyms.) ($patronym_1f &lt;&gt; $patronym_2f).";
         }
     }
     // Check for parents. Abort merge if conflicting parental relations.
@@ -133,7 +133,7 @@ else {
         }
         else { // reject merge
             $okay = false;
-            $reason .= " $_Different_fathers.";
+            $reason .= " gettext(Different fathers.)";
         }
     }
     // if both merge candidates have a mother, check if they are equal.
@@ -143,7 +143,7 @@ else {
         }
         else { // reject merge
             $okay = false;
-            $reason .= " $_Different_mothers.";
+            $reason .= " gettext(Different mothers.)";
         }
     }
     // if all seems good, proceed to merge. if not, produce some sensible screen output
@@ -245,19 +245,19 @@ else {
         header("Location: $app_root/family.php?person=$source");
     }
     else { // explain why the merge failed
-        $title = "$_App_name: $_Merge_persons_failed";
+        $title = "gettext(App name: Merge persons failed)";
         require "./form_header.php";
         echo "<h2>$title!</h2>\n";
         $name_1 = get_name($person_1);
         $name_2 = get_name($person_2);
-        echo "<p>$_Cannot_merge $name_1 ($_born $bdate_1), $_with $name_2 ($_born $bdate_2).<br />\n";
-        echo "$_Reason: $reason</p>\n";
+        echo "<p>gettext(Cannot merge) $name_1 (gettext(born) $bdate_1), gettext(with) $name_2 (gettext(born) $bdate_2).<br />\n";
+        echo "gettext(Reason:) $reason</p>\n";
         echo para(to_url('../family.php',
             array(person => $person_1),
-            "$_Return_to $person_1 $name_1"));
+            "gettext(Return to) $person_1 $name_1"));
         echo para(to_url('../family.php',
             array(person => $person_2),
-            "$_Return_to $person_2 $name_2"));
+            "gettext(Return to) $person_2 $name_2"));
         echo "</body>\n</html>\n";
     }
 }

@@ -14,7 +14,7 @@ require_once "./langs/$language.php";
 // we'll display only raw dates here
 pg_query("SET DATESTYLE TO GERMAN");
 
-$title = "$_Search_for_sources";
+$title = "gettext(Search_for_sources)";
 $form = 'source';
 $focus = 'src';
 

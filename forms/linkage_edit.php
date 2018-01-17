@@ -35,11 +35,11 @@ if (!isset($_POST['posted'])) {
     $node = $_GET['node'];
     $id = $_GET['id'];
     $f_person = $_GET['person'];
-    $title = "Rediger lenke";
+    $title = "gttext(Rediger lenke)";
     $form = 'linkage_edit';
     $focus = 'text';
     require "./form_header.php";
-    echo "<h2>Rediger lenke $id</h2>\n";
+    echo "<h2>gettext(Rediger lenke) $id</h2>\n";
     echo '<p>'
         . fetch_val("SELECT source_text FROM sources WHERE source_id=$node")
         . "</p>\n";
@@ -55,12 +55,12 @@ if (!isset($_POST['posted'])) {
     select_role($row['role_fk']);
     person_id_input($person, 'person_fk', 'Person: ');
     select_surety($row['surety_fk']);
-    text_input("Navn i kilden: ", 100, 's_name', $row['s_name']);
-    textarea_input("Note: ", 5, 100, 'sl_note', $row['sl_note']);
+    text_input("gettext(Navn i kilden:) ", 100, 's_name', $row['s_name']);
+    textarea_input("gettext(Note:) ", 5, 100, 'sl_note', $row['sl_note']);
     form_submit();
     form_end();
 
-    echo "<h3>Personer nevnt i kilden:</h3>\n";
+    echo "<h3>gettext(Personer nevnt i kilden:)</h3>\n";
     list_mentioned($node, 0);
 
     echo "</body>\n</html>\n";

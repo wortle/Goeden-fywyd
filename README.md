@@ -1,7 +1,17 @@
-Yggdrasil 2011-06-06
+Goeden-fwyd 16 January 2018
 ====================
 
-This is Yggdrasil, formerly known as Exodus.
+This is a fork of Yggdrasil, formerly known as Exodus.
+
+The purpose is to convert Leif Kristenen's Yggdrasil to use GNU gettext for 
+internationalisation. In it's current state, before the "gettextisation" is
+complete, it is not usable.
+
+Below is Leif's original README
+
+Bill Berry
+
+-----------------------------------------------------------------------------
 
 It is a genealogy database application using PostgreSQL for data storage and
 internal business logic, and mainly PHP scripts for the interface. I have been

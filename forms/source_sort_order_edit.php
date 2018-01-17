@@ -26,7 +26,7 @@ if (!isset($_POST['posted'])) {
         WHERE person_fk = $person
         AND event_fk = $event
     ");
-    $title = "Edit sort order for $name @ #$event";
+    $title = "gettext(Edit sort order for) $name @ #$event";
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     // print paragraph with event text here

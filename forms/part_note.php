@@ -20,7 +20,7 @@ if (!isset($_POST['posted'])) {
     $person = $_GET['person'];
     $event = $_GET['event'];
     $node = $_GET['node'];
-    $title = "$_Edit_event #$event";
+    $title = "gettext(Edit event) #$event";
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     $note = note_from_db(fetch_val("SELECT COALESCE(
@@ -36,10 +36,10 @@ if (!isset($_POST['posted'])) {
     hidden_input('event', $event);
     hidden_input('node', $node);
     hidden_input('posted', 1);
-    textarea_input("$_Text:<br />$notelen", $note_height, $note_width, 'note', $note);
+    textarea_input("gettext(Text:)<br />$notelen", $note_height, $note_width, 'note', $note);
     form_submit();
     form_end();
-    echo "<h3>$_Citations</h3>\n";
+    echo "<h3>gettext(Citations)</h3>\n";
     $handle = pg_query("SELECT source_fk FROM event_citations WHERE event_fk = $event");
     while ($row = pg_fetch_row($handle)) {
         echo '<p>'.$row[0].' ';

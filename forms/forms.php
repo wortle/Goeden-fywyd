@@ -10,7 +10,7 @@
 
 function select_tag_type($selected=0) {
     // print table row with an option box for tag type
-    echo "<tr><td>Type:  </td><td>\n<select name = \"tag_type\">\n";
+    echo "<tr><td>gettext(Type:)  </td><td>\n<select name = \"tag_type\">\n";
     $handle = pg_query("SELECT tag_type_id, description
                             FROM tag_types ORDER BY tag_type_id");
     while ($rec = pg_fetch_assoc($handle)) {
@@ -45,7 +45,7 @@ function select_tag_group($selected=0) {
 function select_tag($selected=0, $person=0, $event=0) {
     // print table row with an option box for tags
     global $language, $_Type;
-    echo "<tr><td>$_Type:  </td><td>\n<select name=\"tag_fk\">";
+    echo "<tr><td>gettext(Type:)  </td><td>\n<select name=\"tag_fk\">";
     if ($language == 'nb')
         $handle = pg_query("SELECT tag_id, tag_label, tag_count(tag_id) AS tc
                             FROM tags ORDER BY tc desc");
@@ -95,7 +95,7 @@ function select_role($selected=0) {
 
 function select_surety($selected=0) {
     // print table row with an option box for sureties
-    echo "<tr><td>Sikkerhet:  </td><td>\n<select name=\"surety\">";
+    echo "<tr><td>gettext(Sikkerhet:)  </td><td>\n<select name=\"surety\">";
     $handle = pg_query("SELECT surety_id, surety_no FROM sureties ORDER BY surety_id DESC");
     while ($rec = pg_fetch_assoc($handle)) {
         $option = "<option ";

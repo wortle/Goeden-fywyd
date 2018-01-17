@@ -20,7 +20,7 @@ require_once "../langs/$language.php";
 
 if (!isset($_POST['posted'])) {
     $node = $_GET['node'];
-    $title = "$_Add_source";
+    $title = "gettext(Add source)";
     $form = 'source_add';
     $focus = 'text';
     require "./form_header.php";
@@ -36,11 +36,11 @@ if (!isset($_POST['posted'])) {
         WHERE source_id = $node
     ");
     $spt_label = fetch_val("SELECT get_spt_label($part_type)");
-    echo "<h2>$_Add_source ($spt_label)</h2>\n";
+    echo "<h2>gettext(Add source) ($spt_label)</h2>\n";
     form_begin($form, $_SERVER['PHP_SELF']);
     hidden_input('posted', 1);
-    source_num_input("$_Parent_node:", 'node', $node);
-    editarea_input("$_Text:", 20, 100, 'text', $template);
+    source_num_input("gettext(Parent node:)", 'node', $node);
+    editarea_input("gettext(Text:)", 20, 100, 'text', $template);
     if (fetch_val("
         SELECT is_leaf FROM source_part_types WHERE part_type_id = $part_type
     ") == 't') {
@@ -53,8 +53,8 @@ if (!isset($_POST['posted'])) {
         select_source_type('Type:', 'part_type', $part_type);
         select_source_type("$_Subtype:", 'ch_part_type', 0);
     }
-    text_input("$_Sort_order:", 20, 'sort');
-    text_input("$_Source_date:", 20, 'source_date');
+    text_input("gettext(Sort order:)", 20, 'sort');
+    text_input("gettext(Source date:)", 20, 'source_date');
     form_submit();
     form_end();
     echo "</body>\n</html>\n";

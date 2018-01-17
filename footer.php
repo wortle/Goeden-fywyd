@@ -11,7 +11,7 @@
 
 $time_end = getmicrotime();
 $mtime = number_format(($time_end - $time_start),3);
-print ("<p class=\"bluebox\">$_This_page_was_generated_in $mtime $_seconds.</p>\n");
+print ("<p class=\"bluebox\">gettext(This page was generated in $mtime seconds).</p>\n");
 echo "</body>\n</html>\n";
 
 ?>

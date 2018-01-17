@@ -33,15 +33,15 @@ if (!isset($_POST['posted'])) {
     }
     $father = isset($_GET['father']) ? $_GET['father'] : 0;
     $mother = isset($_GET['mother']) ? $_GET['mother'] : 0;
-    $title = "$_Add";
+    $title = "gettext(Add)";
     if ($father && $mother)
-        $title .= " $_child $_of " . get_name($father) . " $_and " . get_name($mother);
+        $title .= " gettext(child of) " . get_name($father) . " gettext(and) " . get_name($mother);
     elseif ($father)
-        $title .= " $_child $_of " . get_name($father);
+        $title .= " gettext(child of) " . get_name($father);
     elseif ($mother)
-        $title .= " $_child $_of " . get_name($mother);
+        $title .= " gettext(child of) " . get_name($mother);
     elseif ($spouse)
-        $title .= " $_spouse $_to " . get_name($spouse);
+        $title .= " gettext(spouse to) " . get_name($spouse);
     else
         $title .= ' person';
     require "./form_header.php";
@@ -65,9 +65,9 @@ if (!isset($_POST['posted'])) {
     select_place(0);
     date_input();
     // text_input("$_Sort_date:", 25, 'sort_date', '');
-    textarea_input("$_Text:", 5, 100, 'event_note', '');
+    textarea_input("gettext(Text:)", 5, 100, 'event_note', '');
     source_input();
-    text_input("$_Age:", 10, 'age', '', "($_Adds_birth_event)");
+    text_input("gettext(Age:)", 10, 'age', '', "(gettext(Adds birth event))");
     form_submit();
     form_end();
     echo "</body>\n</html>\n";
@@ -76,8 +76,8 @@ else {
     $src = $_POST['source_id'];
     $txt = $_POST['source_text'];
     if ($txt && fetch_val("SELECT is_leaf($src)") == 't') {
-        echo "Cannot create subsource under source #$src. ";
-        echo "Please go back and check your source reference.";
+        echo "gettext(Cannot create subsource under source) #$src. ";
+        echo "gettext(Please go back and check your source reference.)";
         die;
     }
     $gender = $_POST['gender'];

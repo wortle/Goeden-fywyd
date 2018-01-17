@@ -78,7 +78,7 @@ require "./header.php";
 // *****************************************************************************
 
 echo "<div class=\"normal\">\n";
-echo "<h2>Node $self"
+echo "<h2>gettext(Node) $self"
     . node_details(
         $props['number_of_events'],
         $props['number_of_relations'],
@@ -111,7 +111,7 @@ echo para(
 $new = isset($_GET['new']) ? $_GET['new'] : 0;
 if ($new && $new < 0) {
     $new = abs($new);
-    echo '<p class="alert">Kilden finnes allerede, se nr. ['
+    echo '<p class="alert">gettext(Kilden finnes allerede, se nr.) ['
         . to_url($_SERVER['PHP_SELF'], array('node' => $new), $new)
         . "]!</p>\n";
 }
@@ -123,7 +123,7 @@ if ($new && $new < 0) {
 if ($props['part_type'] == 1) {
     if (fetch_val("
     	    SELECT COUNT(*) FROM source_linkage WHERE source_fk=$self")) {
-        echo "<h3>Personer nevnt i kilden:</h3>\n";
+        echo "<h3>gettext(Personer nevnt i kilden:)</h3>\n";
         list_mentioned($self, 1);
     }
     else
@@ -136,7 +136,7 @@ if ($props['part_type'] == 1) {
 // *****************************************************************************
 
 if ($props['number_of_events']) {
-    echo "<h3>$_Events:</h3>\n<ol>";
+    echo "<h3>gettext(Events:)</h3>\n<ol>";
     $handle = pg_query("
         SELECT
             e.event_id,
@@ -210,7 +210,7 @@ if ($props['number_of_events']) {
                         'node'      => $self
                         ),
                     square_brace($subrow['sort_order']),
-                    'Edit sort order'
+                    'gettext(Edit sort order)'
                 );
                 echo $bp . linked_name($participant, './family.php');
                 // a non-principal, eg a person mentioned as heir in a probate,
@@ -250,7 +250,7 @@ if ($props['number_of_events']) {
 if ($props['number_of_relations']) {
     $child[1] = $_son;
     $child[2] = $_daughter;
-    echo "<h3>$_Relations:</h3>\n<ol>";
+    echo "<h3>gettext(Relations:)</h3>\n<ol>";
     $handle = pg_query("
         SELECT
             r.relation_id,
@@ -271,8 +271,8 @@ if ($props['number_of_relations']) {
     ");
     while ($row = pg_fetch_assoc($handle)) {
         echo li(linked_name($row['child_fk'], './family.php')
-            . " $_is " . $row['surety'] . ' '
-            . $child[get_gender($row['child_fk'])] . " $_of "
+            . " gettext(is) " . $row['surety'] . ' '
+            . $child[get_gender($row['child_fk'])] . " gettext(of) "
             . linked_name($row['parent_fk'], './family.php')
         );
     }
@@ -284,7 +284,7 @@ if ($props['number_of_relations']) {
 // *****************************************************************************
 
 if ($props['number_of_subsources']) {
-    echo "<h3>$_Subsources:</h3>\n";
+    echo "<h3>gettext(Subsources:)</h3>\n";
     echo "<table>";
     $handle = pg_query("
         SELECT

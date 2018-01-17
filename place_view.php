@@ -17,14 +17,14 @@ require "./functions.php";
 
 $place_id = $_GET['place_id'];
 $place_name = fetch_val("SELECT get_place_name($place_id)");
-$title = "Hendelser knyttet til stedsnavn \"$place_name\"";
+$title = "gettext(Hendelser knyttet til stedsnavn) \"$place_name\"";
 require "./header.php";
 
 echo "<div class=\"normal\">\n";
 echo "<h2>$title</h2>\n";
-echo "<p><a href=\"./place_manager.php\">Alle stedsnavn</a></p>\n";
+echo "<p><a href=\"./place_manager.php\">gettext(Alle stedsnavn)</a></p>\n";
 echo "<table>\n";
-echo "<tr><th>ID</th><th>Hendelse</th><th>Dato</th><th>Deltagere</th></tr>\n";
+echo "<tr><th>ID</th><th>gettext(Hendelse)</th><th>gettext(Dato)</th><th>gettext(Deltagere)</th></tr>\n";
 $handle = pg_query("SELECT event_id, event_name, event_date, p1, p2
                         FROM place_events WHERE place_fk = $place_id ORDER BY event_date");
 while ($row = pg_fetch_assoc($handle)) {
@@ -45,7 +45,7 @@ while ($row = pg_fetch_assoc($handle)) {
     echo "</tr>\n";
 }
 echo "</table>\n";
-echo "<p><a href=\"./place_manager.php\">Alle stedsnavn</a></p>\n";
+echo "<p><a href=\"./place_manager.php\">gettext(Alle stedsnavn)</a></p>\n";
 echo "</div>\n";
 include "./footer.php";
 ?>

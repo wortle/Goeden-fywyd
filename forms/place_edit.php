@@ -24,7 +24,7 @@ function get_place_desc($n) {
 }
 
 if (!isset($_POST['posted'])) {
-    $title = $_Edit_place_name;
+    $title = gettext(Edit place name);
     require "./form_header.php";
     $place_id = $_GET['place_id'];
     if ($place_id == 0) { // new place

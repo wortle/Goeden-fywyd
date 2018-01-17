@@ -15,9 +15,9 @@ require "./forms.php";
 
 if (!isset($_POST['posted'])) {
     $person = $_GET['person'];
-    $title = "Edit Person $person";
+    $title = "gettext(Edit Person) $person";
     require "./form_header.php";
-    echo "<h2>Rediger person $person</h2>\n";
+    echo "<h2>gettext(Rediger person) $person</h2>\n";
     $row = fetch_row_assoc("SELECT * FROM persons WHERE person_id = $person");
     $gender = $row['gender'];
     $given = $row['given'];
@@ -30,12 +30,12 @@ if (!isset($_POST['posted'])) {
     hidden_input('posted', 1);
     hidden_input('person', $person);
     radio_gender($gender);
-    text_input("$_Given:", 50, 'given', $given);
-    text_input("$_Patronym:", 50, 'patronym', $patronym);
-    text_input("$_Toponym:", 50, 'toponym', $toponym);
-    text_input("$_Surname:", 50, 'surname', $surname);
-    text_input("$_Occupation:", 50, 'occupation', $occupation);
-    text_input("$_Epithet:", 50, 'epithet', $epithet);
+    text_input("gettext(Given:)", 50, 'given', $given);
+    text_input("gettext(Patronym:)", 50, 'patronym', $patronym);
+    text_input("gettext(Toponym:)", 50, 'toponym', $toponym);
+    text_input("gettext(Surname:)", 50, 'surname', $surname);
+    text_input("gettext(Occupation:"), 50, 'occupation', $occupation);
+    text_input("gettext(Epithet:)", 50, 'epithet', $epithet);
     form_submit();
     form_end();
     echo "</body>\n</html>\n";

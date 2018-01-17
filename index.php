@@ -10,7 +10,7 @@
 
 require "./settings/settings.php";
 require_once "./langs/$language.php";
-$title = "$_Index_and_name_search";
+$title = "gettext(Index and name search)";
 $form = 'search';
 $focus= 'given';
 require "./functions.php";
@@ -20,15 +20,15 @@ $pcount = fetch_val("SELECT COUNT(*) FROM persons")
                - fetch_val("SELECT COUNT(*) FROM merged");
 
 echo "<div class=\"normal\">";
-echo "<h2>$title ($pcount $_persons)</h2>\n";
+echo "<h2>$title ($pcount gettext(persons))</h2>\n";
 
 // this is a rather special form compared to the rest of the package,
 // hence it doesn't use the forms.php abstractions
 
 echo "<form id=\"search\" action=\"" . $_SERVER['PHP_SELF'] . "\">\n<div>\n";
-echo "$_Given_name: <input type=\"text\" size=\"12\" name=\"given\" />\n";
-echo "\"$_Surname\": <input type=\"text\" size=\"12\" name=\"surname\" />\n";
-echo "$_Birth_year: <input type=\"text\" size=\"8\" name=\"bdate\" />\n";
+echo "gettext(Given name): <input type=\"text\" size=\"12\" name=\"given\" />\n";
+echo "\"gettext(Surname)\": <input type=\"text\" size=\"12\" name=\"surname\" />\n";
+echo "gettext(Birth_year:) <input type=\"text\" size=\"8\" name=\"bdate\" />\n";
 
 echo "&plusmn;<select name = \"diff\">\n";
 echo "<option selected=\"selected\" value=\"0\"></option>\n";
@@ -51,7 +51,7 @@ if (isset($_GET['diff'])) $diff = $_GET['diff'];
 
 // by default, we will display the 50 most recently edited persons.
 if(!isset($given)&&!isset($surname)) {
-    $headline = "$_The_last_50_edited";
+    $headline = "_(The_last_50_edited)";
 
 // This query is sluggish without the following db modification:
 // create index last_edited_persons_key on persons(last_edit,person_id);
@@ -64,7 +64,7 @@ else {
         $literal = ltrim($surname, '!');
     else
         $literal = "%$surname%";
-    $headline = "$_Search_result";
+    $headline = "_(Search_result)";
     $query =
         "SELECT
             person_id,

@@ -19,7 +19,7 @@ if (!isset($_POST['posted'])) {
     $note_width = 100;
     $person = $_GET['person'];
     $name = get_name($person);
-    $title = "$_Add_event_for ($person) $name";
+    $title = "gettext(Add event for) ($person) $name";
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     form_begin('insert_event', $_SERVER['PHP_SELF']);
@@ -29,9 +29,9 @@ if (!isset($_POST['posted'])) {
     participant_input(0);
     select_place(0);
     date_input();
-    textarea_input("$_Text:", $note_height, $note_width, 'event_note', '', 4);
+    textarea_input("gettext(Text:)", $note_height, $note_width, 'event_note', '', 4);
     source_input();
-    text_input("$_Age:", 10, 'age', '', "($_Adds_birth_event)", 7);
+    text_input("gettext(Age:)", 10, 'age', '', "(gettext(Adds birth event))", 7);
     form_submit();
     form_end();
     echo "</body>\n</html>\n";
@@ -40,8 +40,8 @@ else {
     $src = $_POST['source_id'];
     $txt = $_POST['source_text'];
     if ($txt && fetch_val("SELECT is_leaf($src)") == 't') {
-        echo "Cannot create subsource under source #$src. ";
-        echo "Please go back and check your source reference.";
+        echo "gettext(Cannot create subsource under source) #$src. ";
+        echo "gettext(Please go back and check your source reference.)";
         die;
     }
     // process form

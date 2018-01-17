@@ -16,14 +16,14 @@ require "./forms.php";
 if (!isset($_POST['posted'])) {
     $spt = $_GET['spt'];
     if ($spt == 0) { // new tag type
-        $title = "$_Insert $_source_type";
+        $title = "gettext(Insert source type)";
         $description = '';
         $label_en = '';
         $label_nb = '';
         $is_leaf = 'f';
     }
     else {
-        $title = "$_Edit $_source_type #$spt";
+        $title = "gettext(Edit source type) #$spt";
         $spt_row = fetch_row_assoc("
             SELECT
                 label_en,

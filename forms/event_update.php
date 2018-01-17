@@ -18,7 +18,7 @@ if (!isset($_POST['posted'])) {
     $event = $_GET['event'];
     $person = $_GET['person'];
     $name = get_name($person);
-    $title = "$_Edit_event #$event ($_person #$person $name)";
+    $title = "gettext(Edit_event) #$event ($_person #$person $name)";
     require "./form_header.php";
     echo "<h2>$title</h2>\n";
     $rec = fetch_row_assoc("SELECT tag_fk, place_fk, event_date, date2text(sort_date) AS sd, event_note
@@ -34,12 +34,12 @@ if (!isset($_POST['posted'])) {
         select_tag($rec['tag_fk'], $person, $event);
         select_place($rec['place_fk']);
         date_input($rec['event_date'], $rec['sd']);
-        textarea_input("$_Text:<br />$notelen", $note_height, $note_width, 'event_note', $note);
+        textarea_input("gettext(Text:)<br />$notelen", $note_height, $note_width, 'event_note', $note);
         source_input();
-        text_input("$_Age:", 10, 'age', '', "($_Adds_birth_event)");
+        text_input("gettext(Age:)", 10, 'age', '', "(gettext(Adds birth event))");
         form_submit();
     form_end();
-    echo "<h3>$_Citations</h3>\n";
+    echo "<h3>gettext(Citations)</h3>\n";
     $handle = pg_query("SELECT source_fk FROM event_citations WHERE event_fk = $event");
     while ($row = pg_fetch_row($handle)) {
         echo '<p>'.$row[0].' ';
@@ -53,8 +53,8 @@ else {
     $src = $_POST['source_id'];
     $txt = $_POST['source_text'];
     if ($txt && fetch_val("SELECT is_leaf($src)") == 't') {
-        echo "Cannot create subsource under source #$src. ";
-        echo "Please go back and check your source reference.";
+        echo "gettext(Cannot create subsource under source) #$src. ";
+        echo "gettext(Please go back and check your source reference.)";
         die;
     }
     $event = $_POST['event'];

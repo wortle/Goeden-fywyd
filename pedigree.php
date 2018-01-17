@@ -261,12 +261,12 @@ function build_tree($p) {
 // *****************************************************************************
 
 $pedigree = true;
-$title = "$person $name, $_ancestors";
+$title = "$person $name, gettext(ancestors)";
 require "./header.php";
 spousebox($person);
 childbox($person);
 echo '<div class="normal">';
-echo "<h2>$_Pedigree_for $name</h2>\n";
+echo "<h2>gettext(Pedigree for) $name</h2>\n";
 build_tree($person);
 echo "</div>\n";
 include "./footer.php";

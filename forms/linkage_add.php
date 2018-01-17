@@ -33,12 +33,12 @@ require_once "../langs/$language.php";
 
 if (!isset($_POST['posted'])) {
     $node = $_GET['node'];
-    $title = "Lag lenke";
+    $title = "gettext(Lag lenke)";
     $form = 'linkage_add';
     $focus = 'text';
     $per_id = fetch_val("SELECT COUNT(*) + 1 FROM source_linkage WHERE source_fk=$node");
     require "./form_header.php";
-    echo "<h2>Lag lenke</h2>\n";
+    echo "<h2>gettext(Lag lenke)</h2>\n";
     echo '<p>'
         . fetch_val("SELECT source_text FROM sources WHERE source_id=$node")
         . "</p>\n";
@@ -47,17 +47,17 @@ if (!isset($_POST['posted'])) {
     hidden_input('posted', 1);
     hidden_input('node', $node);
     // per_id
-    text_input("Lnr.: ", 10, 'per_id', $per_id);
+    text_input("gettext(Lnr.:) ", 10, 'per_id', $per_id);
     // role_fk
     select_role();
     person_id_input(0, 'person_id', 'Person:');
     select_surety();
-    text_input("Navn i kilden: ", 100, 's_name');
-    textarea_input("Note: ", 5, 100, 'sl_note');
+    text_input("gettext(Navn i kilden:) ", 100, 's_name');
+    textarea_input("gettext(Note:) ", 5, 100, 'sl_note');
     form_submit();
     form_end();
 
-    echo "<h3>Personer nevnt i kilden:</h3>\n";
+    echo "<h3>gettext(Personer nevnt i kilden:)</h3>\n";
     list_mentioned($node, 0);
     echo "</body>\n</html>\n";
 }

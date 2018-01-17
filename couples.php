@@ -11,7 +11,7 @@
 require "./settings/settings.php";
 require_once "./langs/$language.php";
 
-$title = "$_Search_for_couples";
+$title = gettext(Search for couples);
 $form = 'couple';
 $focus= 'husb';
 require "./header.php";
@@ -21,9 +21,9 @@ echo "<div class=\"normal\">";
 echo "<h2>$title</h2>\n";
 
 echo "<form id=\"couple\" action=\"" . $_SERVER['PHP_SELF'] . "\">\n<div>\n";
-echo "$_Husband: <input type=\"text\" size=\"12\" name=\"husb\" />\n";
-echo "$_Wife: <input type=\"text\" size=\"12\" name=\"wife\" />\n";
-echo "<input type=\"submit\" value=\"$_Search\" />\n";
+echo "gettext(Husband): <input type=\"text\" size=\"12\" name=\"husb\" />\n";
+echo "gettext(Wife): <input type=\"text\" size=\"12\" name=\"wife\" />\n";
+echo "<input type=\"submit\" value=\"gettext(Search)\" />\n";
 echo "</div>\n</form>\n\n";
 
 $husb = isset($_GET['husb']) ? $_GET['husb'] : '';
