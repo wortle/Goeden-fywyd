@@ -308,3 +308,5 @@ License
 
 Copyright (C) 2006-2011 by Leif B. Kristensen <leif@solumslekt.org>
 All rights reserved. For terms of use, see LICENSE.txt
+=======
+
